@@ -17,7 +17,6 @@ import numpy as np
 import pandas as pd
 
 from src.data.data_loader import load_raw_data
-from src.data.feature_engineering import FeaturePipeline
 from src.drift.detector import ConceptDriftDetector
 from src.models.ensemble_model import AsymmetricEnsembleClassifier
 from src.orchestration.config_loader import AppConfig, load_config

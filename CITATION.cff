@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software or research framework in your work, please cite it as below."
+authors:
+  - family-names: "Gaund"
+    given-names: "Sahil"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "Adaptive Explainable Predictive Maintenance via Online Concept Drift Detection and Asymmetric Cost-Sensitive Ensemble Learning"
+version: 1.0.0
+date-released: 2026-07-22
+url: "https://github.com/sahil-gaund03/adaptive-explainable-predictuve-maintenance"
+repository-code: "https://github.com/sahil-gaund03/adaptive-explainable-predictuve-maintenance.git"
+keywords:
+  - predictive maintenance
+  - concept drift
+  - asymmetric cost matrix
+  - explainable ai
+  - tree-shap
+  - dice counterfactual recourse
+  - industry 4.0
