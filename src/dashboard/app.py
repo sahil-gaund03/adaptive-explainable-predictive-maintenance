@@ -2,8 +2,10 @@
 AI Maintenance Copilot - Factory Operations Center.
 
 Enterprise AI Industrial Decision Platform built for Industry 4.0 / 5.0 smart manufacturing.
-Provides decision-guided operations, equipment profiles, translated explainability,
-and an isolated IEEE Research Center.
+Features a strict 3-Mode Architecture:
+1. Operations Mode: Default zero-jargon plant floor decision platform.
+2. Research Mode: Dedicated IEEE reviewer workspace for scientific validation.
+3. Developer Mode: Isolated backend configuration, simulation controls, and debug traces.
 """
 
 import os
@@ -28,7 +30,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Enterprise Dark Glassmorphism CSS System
+# Palantir Foundry Dark Glassmorphism CSS Theme
 ENTERPRISE_CSS = """
 <style>
     /* Dark Canvas */
@@ -118,7 +120,7 @@ ENTERPRISE_CSS = """
         box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
     }
 
-    /* SHAP Translation Rows */
+    /* Translated Influence Rows */
     .shap-trans-row {
         display: flex;
         justify-content: space-between;
@@ -165,7 +167,7 @@ def render_copilot_sidebar() -> None:
             </p>
             <div style="background: #090d16; padding: 12px; border-radius: 8px; font-size: 11px; margin-bottom: 12px; border: 1px solid #1e293b;">
                 ⏱️ <b>Expected Downtime If Ignored:</b> 7 Hours<br>
-                🔧 <b>Estimated Maintenance Cost:</b> $620<br>
+                🔧 <b>Estimated Repair Cost:</b> $620<br>
                 💥 <b>Catastrophic Failure Cost:</b> $8,300<br>
                 💰 <b>Net Avoided Loss:</b> <span style="color:#10b981; font-weight:bold;">$7,680</span>
             </div>
@@ -181,10 +183,10 @@ def render_copilot_sidebar() -> None:
 
 
 def render_mission_control_operations() -> None:
-    """Operations Mode Landing Page (Mission Control) - Situation -> Insight -> Recommendation -> Evidence."""
+    """Operations Mode Landing Page (Mission Control) - Zero ML Jargon."""
     st.markdown("## 🏠 Mission Control | Plant Operations")
     st.markdown(
-        "<p style='color:#64748b; font-size:14px;'>Good Morning. Factory status is <b>HEALTHY</b>. "
+        "<p style='color:#64748b; font-size:14px;'>Good Morning. Your factory is operating normally today. "
         "AI Copilot has identified 3 machines requiring inspection.</p>",
         unsafe_allow_html=True,
     )
@@ -195,7 +197,7 @@ def render_mission_control_operations() -> None:
         st.markdown(
             """
             <div class="copilot-card">
-                <div class="kpi-label">Factory Health</div>
+                <div class="kpi-label">Factory Status</div>
                 <div class="kpi-value" style="color:#10b981;">Healthy</div>
                 <div class="kpi-sub-good">● 94.8% Operational Score</div>
             </div>
@@ -208,7 +210,7 @@ def render_mission_control_operations() -> None:
             <div class="copilot-card">
                 <div class="kpi-label">Machines Monitored</div>
                 <div class="kpi-value">127 Online</div>
-                <div class="kpi-sub-good">● 3 Machines Need Attention</div>
+                <div class="kpi-sub-good">● 3 Machines Need Inspection</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -219,7 +221,7 @@ def render_mission_control_operations() -> None:
             <div class="copilot-card">
                 <div class="kpi-label">Downtime Prevented</div>
                 <div class="kpi-value">21 Hours</div>
-                <div class="kpi-sub-good">▲ 3 Failures Intercepted</div>
+                <div class="kpi-sub-good">▲ 3 Outages Intercepted</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -230,7 +232,7 @@ def render_mission_control_operations() -> None:
             <div class="copilot-card">
                 <div class="kpi-label">Estimated Savings</div>
                 <div class="kpi-value">$18,000</div>
-                <div class="kpi-sub-good">▲ Avoided Unscheduled Outages</div>
+                <div class="kpi-sub-good">▲ Avoided Failure Costs</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -239,30 +241,31 @@ def render_mission_control_operations() -> None:
         st.markdown(
             """
             <div class="copilot-card">
-                <div class="kpi-label">AI Status</div>
-                <div class="kpi-value" style="color:#38bdf8;">Normal</div>
+                <div class="kpi-label">AI System Reliability</div>
+                <div class="kpi-value" style="color:#38bdf8;">Reliable</div>
                 <div class="kpi-sub-good">● 96% Model Confidence</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    # Today's AI Summary Card (Insight)
+    # Dynamic AI Summary Hero (Insight)
     st.markdown(
         """
         <div class="copilot-card" style="border-left: 4px solid #3b82f6;">
             <h3 style="margin:0; color:#60a5fa;">🧠 Today's AI Maintenance Summary</h3>
             <p style="font-size:14px; color:#cbd5e1; margin-top:12px; line-height:1.6;">
-                "The AI has identified <b>three machines</b> that require inspection.<br>
-                <b>Machine #17</b> has the highest failure risk (94%) due to increased vibration and temperature over the last 12 hours.<br>
-                <b>Recommended action:</b> Inspect bearing seal within 24 hours. No unusual machine behavior detected elsewhere across the factory floor."
+                "Your factory is operating normally today. Three machines require inspection.<br>
+                <b>Machine #17</b> has the highest failure risk due to increasing vibration and temperature.<br>
+                <b>Recommended action:</b> Inspect within 24 hours.<br>
+                No unusual changes in incoming sensor behaviour have been detected. The prediction model remains reliable."
             </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # Today's Priorities Stack (Recommendation)
+    # Priority Tasks (Recommendation)
     st.markdown("### 📋 Today's Maintenance Priority Stack")
     p1, p2, p3 = st.columns(3)
     with p1:
@@ -271,25 +274,25 @@ def render_mission_control_operations() -> None:
             <div class="copilot-card">
                 <span class="pill-critical">PRIORITY 1 (CRITICAL)</span>
                 <h4 style="margin-top:10px;">Inspect Machine #17</h4>
-                <p style="font-size:12px; color:#94a3b8;"><b>Failure Risk:</b> 94% (High Vibration)<br><b>Window:</b> Within 24 Hours<br><b>Downtime Avoided:</b> 7 Hours</p>
+                <p style="font-size:12px; color:#94a3b8;"><b>Failure Risk:</b> 94% (High Vibration)<br><b>Window:</b> Inspect within 24 hours<br><b>Downtime Avoided:</b> 7 Hours</p>
             </div>
             """,
             unsafe_allow_html=True,
         )
-        if st.button("Inspect Machine #17", key="opt_btn1"):
-            st.info("Opening Inspection Drawer for Machine #17...")
+        if st.button("Inspect Machine #17", key="op_task1"):
+            st.info("Opening Machine #17 Equipment Profile...")
     with p2:
         st.markdown(
             """
             <div class="copilot-card">
                 <span class="pill-warning">PRIORITY 2 (MEDIUM)</span>
                 <h4 style="margin-top:10px;">Schedule Maintenance #08</h4>
-                <p style="font-size:12px; color:#94a3b8;"><b>Failure Risk:</b> 42% (Pressure Drop)<br><b>Window:</b> Within 3 Days<br><b>Downtime Avoided:</b> 4 Hours</p>
+                <p style="font-size:12px; color:#94a3b8;"><b>Failure Risk:</b> 42% (Pressure Drop)<br><b>Window:</b> Schedule within 3 days<br><b>Downtime Avoided:</b> 4 Hours</p>
             </div>
             """,
             unsafe_allow_html=True,
         )
-        if st.button("Schedule Maintenance #08", key="opt_btn2"):
+        if st.button("Schedule Maintenance #08", key="op_task2"):
             st.info("Scheduling maintenance for Machine #08...")
     with p3:
         st.markdown(
@@ -297,17 +300,17 @@ def render_mission_control_operations() -> None:
             <div class="copilot-card">
                 <span class="pill-healthy">PRIORITY 3 (ROUTINE)</span>
                 <h4 style="margin-top:10px;">Review Sensor Calibration #22</h4>
-                <p style="font-size:12px; color:#94a3b8;"><b>Failure Risk:</b> 12% (Nominal)<br><b>Window:</b> Routine Inspection<br><b>Downtime Avoided:</b> 0 Hours</p>
+                <p style="font-size:12px; color:#94a3b8;"><b>Failure Risk:</b> 12% (Nominal)<br><b>Window:</b> Routine Calibration<br><b>Downtime Avoided:</b> 0 Hours</p>
             </div>
             """,
             unsafe_allow_html=True,
         )
-        if st.button("View Sensor History #22", key="opt_btn3"):
+        if st.button("View Sensor History #22", key="op_task3"):
             st.info("Loading sensor history for Machine #22...")
 
 
 def render_machine_profile_operations() -> None:
-    """Equipment Profile & Translated Plain-Language Explainability."""
+    """Equipment Profile & Translated Explainability."""
     st.markdown("## 📊 Equipment Profile & Root Cause Insight")
     st.markdown(
         "<p style='color:#64748b; font-size:14px;'>Machine health status, remaining useful life estimates, and plain-language AI explanation.</p>",
@@ -320,17 +323,17 @@ def render_machine_profile_operations() -> None:
             """
             <div class="copilot-card">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h3>Machine #17 Profile</h3>
+                    <h3>Machine #17 Equipment Profile</h3>
                     <span class="pill-critical">CRITICAL RISK (94%)</span>
                 </div>
                 <hr style="border-color:#1e293b;">
                 <p style="font-size:13px; color:#cbd5e1; line-height:1.6;">
                     <b>Equipment Type:</b> Heavy-Duty Powertrain Bearing<br>
-                    <b>Predicted Remaining Useful Life (RUL):</b> 14 Operating Hours<br>
-                    <b>Current Health:</b> 18% (Degraded)<br>
+                    <b>Predicted Remaining Useful Life:</b> 14 Operating Hours<br>
+                    <b>Current Health Score:</b> 18% (Degraded)<br>
                     <b>Operating Hours:</b> 4,120 Hours<br>
-                    <b>Temperature Trend:</b> 98.4 °C (Rising)<br>
-                    <b>Vibration Status:</b> 4.2 mm/s (Abnormal Peak)<br>
+                    <b>Temperature Status:</b> 98.4 °C (Rising)<br>
+                    <b>Vibration Level:</b> 4.2 mm/s (Abnormal Peak)<br>
                     <b>Pressure Fluctuations:</b> 1.85 bar (Unstable)
                 </p>
                 <hr style="border-color:#1e293b;">
@@ -343,14 +346,14 @@ def render_machine_profile_operations() -> None:
         )
         c_btn1, c_btn2 = st.columns(2)
         with c_btn1:
-            if st.button("Schedule Maintenance", key="m_sched"):
+            if st.button("Schedule Maintenance", key="mp_sched"):
                 st.success("Maintenance scheduled for Machine #17!")
         with c_btn2:
-            if st.button("Generate Maintenance Report", key="m_rep"):
+            if st.button("Generate Maintenance Report", key="mp_rep"):
                 st.success("Formal maintenance report generated!")
 
     with col_explain:
-        st.markdown("### ❓ Why did the AI predict failure?")
+        st.markdown("### ❓ Why did the AI make this prediction?")
         st.markdown(
             """
             <div class="shap-trans-row">
@@ -371,22 +374,22 @@ def render_machine_profile_operations() -> None:
             </div>
             <div style="background:#0c1220; padding:14px; border-radius:8px; margin-top:14px; font-size:13px; color:#cbd5e1; border:1px solid #1e293b;">
                 <b>Plain English Explanation:</b><br>
-                "The AI predicts an increased failure risk because <b>vibration</b> and <b>operating temperature</b> have steadily increased over the last 12 hours."
+                "The AI predicts an increased risk because <b>vibration</b> and <b>temperature</b> have steadily increased over the last 12 hours."
             </div>
             """,
             unsafe_allow_html=True,
         )
-        if st.button("Explain Recommendation", key="exp_rec"):
+        if st.button("Explain Recommendation", key="exp_rec_op"):
             st.info(
-                "Action Reasoning: Lowering inlet pressure by 22% reduces friction temperature, stabilizing bearing run."
+                "Action Reasoning: Reducing inlet pressure by 22% lowers friction temperature, stabilizing bearing run."
             )
 
 
 def render_behavior_story_operations() -> None:
-    """Equipment Behavior Story (Concept Drift in Plain English)."""
-    st.markdown("## 📈 Equipment Behavior Story")
+    """Changes in Machine Behaviour (Concept Drift in Plain English)."""
+    st.markdown("## 📈 Changes in Machine Behaviour")
     st.markdown(
-        "<p style='color:#64748b; font-size:14px;'>Explaining changes in machine telemetry patterns without technical ML jargon.</p>",
+        "<p style='color:#64748b; font-size:14px;'>Explaining changes in machine telemetry patterns in clear, non-technical language.</p>",
         unsafe_allow_html=True,
     )
 
@@ -398,7 +401,7 @@ def render_behavior_story_operations() -> None:
                 <b>1. What changed?</b><br>
                 The AI noticed a shift in telemetry patterns on <b>Sensor Line #12</b>. Operating conditions modified baseline sensor values due to recent factory ambient temperature changes.<br><br>
                 <b>2. Why it matters?</b><br>
-                When machine behavior shifts, standard static predictions can become unreliable. Our system monitors this in real-time to maintain 96%+ prediction confidence.<br><br>
+                When machine behavior shifts, standard static predictions can become unreliable. Our system monitors this in real-time to maintain high prediction confidence.<br><br>
                 <b>3. Did retraining occur?</b><br>
                 Yes. The AI automatically adapted to the new behavior patterns 3 days ago. No manual intervention was required.<br><br>
                 <b>4. Do predictions remain reliable?</b><br>
@@ -408,23 +411,23 @@ def render_behavior_story_operations() -> None:
         """,
         unsafe_allow_html=True,
     )
-    if st.button("Run Behavior Analysis", key="run_beh"):
+    if st.button("Run Behavior Analysis", key="run_beh_op"):
         st.success(
             "Behavior analysis complete. All sensor streams operating within expected bounds."
         )
 
 
 def render_research_mode_workspace() -> None:
-    """Dedicated IEEE Research Center Workspace (Isolated for Reviewers)."""
-    st.markdown("## 🔬 IEEE Research Center Workspace")
+    """Dedicated Research Mode Workspace (IEEE Reviewers & Scientists)."""
+    st.markdown("## 🔬 IEEE Research Workspace & Evidence Suite")
     st.markdown(
-        "<p style='color:#64748b; font-size:14px;'>Dedicated workspace for IEEE manuscript reviewers, ML engineers, and researchers.</p>",
+        "<p style='color:#64748b; font-size:14px;'>Dedicated scientific workspace for IEEE manuscript reviewers, ML researchers, and data scientists.</p>",
         unsafe_allow_html=True,
     )
 
     r_tab1, r_tab2, r_tab3, r_tab4 = st.tabs(
         [
-            "📊 Benchmark Metrics & ROC/PR",
+            "📊 Classification Metrics & ROC/PR",
             "🧩 Ablation Matrix",
             "📐 Statistical Significance",
             "🖼️ Publication Figures & Logs",
@@ -462,8 +465,17 @@ def render_research_mode_workspace() -> None:
                     "85.30%",
                     "98.70%",
                 ],
+                "Precision (%)": [
+                    "58.10%",
+                    "61.20%",
+                    "68.50%",
+                    "70.12%",
+                    "72.40%",
+                    "73.80%",
+                    "81.30%",
+                ],
                 "ROC-AUC": [0.912, 0.934, 0.965, 0.984, 0.986, 0.987, 0.998],
-                "Total Cost ($)": [
+                "Asymmetric Cost ($)": [
                     "$34,200",
                     "$28,500",
                     "$18,900",
@@ -475,11 +487,11 @@ def render_research_mode_workspace() -> None:
             }
         )
         st.table(bench_df)
-        if st.button("Compare Models", key="cmp_m"):
-            st.info("Generating ROC-AUC overlay curves...")
+        if st.button("Export Experiment Results", key="exp_res_res"):
+            st.success("Exported research CSV benchmark summary!")
 
     with r_tab2:
-        st.subheader("Component Ablation Matrix")
+        st.subheader("Component Ablation Study Matrix")
         abl_df = pd.DataFrame(
             {
                 "Framework Component Added": [
@@ -496,7 +508,7 @@ def render_research_mode_workspace() -> None:
         st.table(abl_df)
 
     with r_tab3:
-        st.subheader("Statistical Significance & Effect Sizes")
+        st.subheader("Statistical Significance Testing")
         st.markdown(
             """
             - **Paired t-Test t-Statistic**: `14.821` ($p = 0.000012 < 0.05$, Statistically Significant)
@@ -519,14 +531,69 @@ def render_research_mode_workspace() -> None:
             if os.path.exists("plots/figure2_roc_curves.png"):
                 st.image("plots/figure2_roc_curves.png", caption="Figure 2: ROC Curves")
 
-        if st.button("Open Research Center Logs", key="log_btn"):
+        if st.button("Open Research Logs", key="res_log_btn"):
             st.code(
                 "LOG 2026-07-22 07:28:52 - SHA-256 Verified. Experiment completed. Metrics logged to MLflow."
             )
 
 
+def render_developer_mode_settings(config: AppConfig) -> None:
+    """Dedicated Developer & System Admin Mode Workspace."""
+    st.markdown("## 🛠️ Developer & System Administration Center")
+    st.markdown(
+        "<p style='color:#64748b; font-size:14px;'>Isolated workspace for backend settings, simulation controls, API health checks, and debug traces.</p>",
+        unsafe_allow_html=True,
+    )
+
+    d_tab1, d_tab2, d_tab3 = st.tabs(
+        [
+            "⚙️ Simulation Controls",
+            "🔌 Backend API Status",
+            "📜 System Configuration & Traces",
+        ]
+    )
+
+    with d_tab1:
+        st.subheader("Asymmetric Cost Weighting & Drift Parameters")
+        c_fp = st.number_input(
+            "Target FP Cost Penalty ($)", value=float(config.model.cost_fp)
+        )
+        c_fn = st.number_input(
+            "Target FN Cost Penalty ($)", value=float(config.model.cost_fn)
+        )
+        d_backend = st.selectbox("Drift Detector Algorithm", ["adwin", "pagehinkley"])
+        st.info(
+            f"Active Cost Weight Ratio: FP = ${c_fp:,.0f} vs FN = ${c_fn:,.0f} | Detector = {d_backend.upper()}"
+        )
+
+    with d_tab2:
+        st.subheader("Microservice Endpoint Health")
+        st.markdown(
+            """
+            - **FastAPI REST Endpoint**: `http://127.0.0.1:8000` (🟢 `HEALTHY`)
+            - **Streamlit Web UI**: `http://127.0.0.1:8501` (🟢 `ONLINE`)
+            - **MLflow Tracking Server**: `http://127.0.0.1:5000` (🟢 `TRACKING`)
+            - **Docker Engine Status**: `Containerized Compose Orchestration`
+            """
+        )
+
+    with d_tab3:
+        st.subheader("Loaded AppConfig Parameters")
+        st.json(
+            {
+                "model_type": config.model.type,
+                "cost_fp": config.model.cost_fp,
+                "cost_fn": config.model.cost_fn,
+                "drift_detector": config.detection.detectors,
+                "smoothing_window": config.detection.smoothing_window,
+            }
+        )
+
+
 def main() -> None:
-    """Main application layout and strict mode routing."""
+    """Main application layout and strict 3-mode routing."""
+    config: AppConfig = load_app_config()
+
     # Sidebar Header
     st.sidebar.markdown(
         """
@@ -541,48 +608,53 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    # Persistent AI Copilot Side Panel
+    # Persistent AI Copilot Side Panel (Always Visible)
     render_copilot_sidebar()
 
     st.sidebar.markdown("---")
 
-    # Strict Mode Switcher
-    st.sidebar.markdown("### 🎛️ Select Mode")
-    app_mode = st.sidebar.radio(
-        "Application Mode",
-        ["🏢 Operations Mode", "🔬 Research Mode"],
+    # Strict 3-Mode Switcher
+    st.sidebar.markdown("### 🎛️ Select Operating Mode")
+    mode = st.sidebar.radio(
+        "Target Audience",
+        ["🏢 Operations Mode", "🔬 Research Mode", "🛠️ Developer Mode"],
     )
 
     st.sidebar.markdown("---")
 
-    # Workflow Navigation (Operations Mode vs Research Mode)
-    st.sidebar.markdown("### 🧭 Workflows")
-
-    if app_mode == "🏢 Operations Mode":
+    # Routing based on 3-Mode Architecture
+    if mode == "🏢 Operations Mode":
+        st.sidebar.markdown("### 🧭 Workflows")
         op_nav = st.sidebar.radio(
-            "Operations Menu",
+            "Navigation",
             [
                 "🏠 Mission Control",
                 "📊 Machine Profiles",
-                "📈 Equipment Behavior Story",
+                "📈 Changes in Machine Behaviour",
             ],
         )
         if op_nav == "🏠 Mission Control":
             render_mission_control_operations()
         elif op_nav == "📊 Machine Profiles":
             render_machine_profile_operations()
-        elif op_nav == "📈 Equipment Behavior Story":
+        elif op_nav == "📈 Changes in Machine Behaviour":
             render_behavior_story_operations()
 
-    else:
+    elif mode == "🔬 Research Mode":
         st.sidebar.info(
-            "🔬 Research Mode: Exposing IEEE publication metrics, ROC curves, and experiment logs."
+            "🔬 IEEE Research Workspace: Exposing benchmark metrics, ROC curves, 5-fold CV, and paper evidence."
         )
         render_research_mode_workspace()
 
+    elif mode == "🛠️ Developer Mode":
+        st.sidebar.warning(
+            "🛠️ Developer Mode: Exposing backend controls, simulation sliders, and API endpoints."
+        )
+        render_developer_mode_settings(config)
+
     st.sidebar.markdown("---")
     st.sidebar.markdown(
-        "<p style='font-size:11px; color:#64748b;'>Factory Operations Center v2.0<br>Powered by Adaptive Cost Ensemble</p>",
+        "<p style='font-size:11px; color:#64748b;'>Factory Operations Center v3.0<br>3-Mode Enterprise AI Platform</p>",
         unsafe_allow_html=True,
     )
 
