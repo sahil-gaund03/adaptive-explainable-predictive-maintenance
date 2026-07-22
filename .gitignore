@@ -75,6 +75,7 @@ models/*.pkl
 models/*.joblib
 models/*.json
 outputs/
+catboost_info/
 
 # IDEs & Editors
 .vscode/

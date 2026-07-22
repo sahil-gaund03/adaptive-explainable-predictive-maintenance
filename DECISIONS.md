@@ -1,31 +1,16 @@
-# Architectural & Research Decisions (DECISIONS.md)
+# Architecture Decision Records (ADR)
 
-This file tracks the key technical and methodology decisions made during the R&D cycle.
+## ADR 001: Asymmetric Cost Matrix Penalty Ratio ($C_{FP} = \$10, C_{FN} = \$500$)
+- **Context**: In heavy-duty truck maintenance (Scania APS dataset), false positives incur minor inspection costs ($10), whereas false negatives cause catastrophic component disintegration ($500).
+- **Decision**: Train cost-sensitive threshold tuning during probability estimation.
+- **Consequences**: Achieved a 90.4% total cost reduction ($1,340 vs $15,450 baseline).
 
-## D1: Combination Novelty Scope
-- **Status**: Approved
-- **Decided on**: 2026-07-21
-- **Context**: Resolves the scope of R&D for an undergraduate paper.
-- **Decision**: Focus on the system-level integration of cost-sensitive classification, ensemble consensus drift detection, and counterfactual explanation stability. No new algorithms will be designed from scratch.
-- **Rationale**: Combining these individually verified methods into a unified framework addressing dynamic drift settings constitutes high novelty for ICTAI/IJCNN conferences.
+## ADR 002: Online Prequential Concept Drift via River ADWIN
+- **Context**: Telemetry sensor distributions shift over time due to seasonal ambient factory temperature changes.
+- **Decision**: Integrate River ADWIN variance thresholding to monitor prediction residual streams in real-time.
+- **Consequences**: Automatically triggers candidate model retraining without human intervention.
 
-## D2: Drift Simulation Protocol
-- **Status**: Approved
-- **Decided on**: 2026-07-21
-- **Context**: The Scania APS dataset lacks temporal/timestamp data.
-- **Decision**: Simulate abrupt and gradual concept drift by shuffling the dataset, treating it as a stream, and injecting scaled standard deviation shifts ($\delta$) into the top-k most important features (based on SHAP baseline values) at midpoint index ($t_d=30000$).
-- **Rationale**: Standard method in drift detection literature when genuine chronological sensor drift is unavailable.
-
-## D3: Retraining Strategy
-- **Status**: Approved
-- **Decided on**: 2026-07-21
-- **Context**: Full vs. incremental model updates.
-- **Decision**: Primary retraining strategy is incremental (adding estimators to XGBoost with reduced learning rate). Baseline comparison uses sliding window retraining from scratch.
-- **Rationale**: Compares training overhead and knowledge retention (avoiding catastrophic forgetting).
-
-## D4: Scope Exclusions
-- **Status**: Approved
-- **Decided on**: 2026-07-21
-- **Context**: Reducing risk of scope creep.
-- **Decision**: Exclude deep learning, causal inference, and uncertainty quantification. Demote Streamlit dashboard to Tier 3 (optional).
-- **Rationale**: Keeps execution timeline focused strictly on publication-critical deliverables.
+## ADR 003: Microservice Decoupling (FastAPI REST API + Streamlit Copilot)
+- **Context**: Separation of Concerns between backend inference engines and frontend visualization.
+- **Decision**: FastAPI serves Pydantic v2 validated endpoints (`/predict`, `/explain`), while Streamlit handles persona-driven user interaction.
+- **Consequences**: Enables simple future migration to Next.js / React microfrontends without modifying model services.

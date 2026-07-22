@@ -1,29 +1,22 @@
-# Project Roadmap (ROADMAP.md)
+# Product & Research Roadmap
 
-## 1. Project Milestones
+## 🎯 Release Milestones
 
-| Milestone | Description | Est. Timeline | Status |
-|:---|:---|:---|:---|
-| **M1: Project Scaffold** | Repositories, metadata, environment, linting/formatting, skeleton | Week 1 | In Progress |
-| **M2: Config & Logging** | Pydantic types, JSON logging config, YAML default setup, config loader | Week 1 | Planned |
-| **M3: Dataset Management** | Loader, downloader scripts, dataset verification | Week 1-2 | Planned |
-| **M4: Data Validation** | Pydantic data schemas and validation checks | Week 2 | Planned |
-| **M5: EDA** | Exploratory Data Analysis notebooks and visualizations | Week 2 | Planned |
-| **M6: Feature Engineering** | Processing pipeline: imputation, log-transforms, indicators | Week 2 | Planned |
-| **M7: Baseline Models** | XGBoost, LightGBM, CatBoost static training & threshold tuning | Week 3-5 | Planned |
-| **M8: Ensemble Learning** | Asymmetric cost weighting, cost-sensitive learning setup | Week 4-5 | Planned |
-| **M9: Drift Detection** | Drift simulator (abrupt/gradual), River detectors ensemble | Week 6-8 | Planned |
-| **M10: Explainability (SHAP)** | TreeSHAP exact attributions | Week 9 | Planned |
-| **M11: Retraining Controller** | Incremental estimator adding and window retraining | Week 10-11 | Planned |
-| **M12: Evaluation & Experiments** | Execution of all 8 experiments across 20 runs, statistical testing | Week 12-14 | Planned |
-| **M13: Dashboard** | (Tier 3 Optional) Streamlit status monitoring UI | Week 13-14 | Planned |
-| **M14: FastAPI Service** | Serving prediction and CFE/SHAP explanation endpoints | Week 17 | Planned |
-| **M15: Containerized Deployment**| Multi-container setup with compose (experiment, api, mlflow) | Week 17 | Planned |
-| **M16: Project Documentation**| README, inline documentation check, reproduction instructions | Week 18 | Planned |
-| **M17: Paper Assets** | Tables, figures, and publication-ready manuscript | Week 18 | Planned |
+### Version 1.0.0 (Current LTS Release - July 2026)
+- [x] Complete Python backend modular architecture (`src/`).
+- [x] Asymmetric cost matrix ensemble ($C_{FP}=\$10, C_{FN}=\$500$).
+- [x] River ADWIN and Page-Hinkley online concept drift detection.
+- [x] TreeSHAP attributions and DiCE counterfactual recourse recommendations.
+- [x] Streamlit 3-Mode Enterprise AI Maintenance Copilot (`src/dashboard/app.py`).
+- [x] FastAPI REST microservice API (`/predict`, `/explain`, `/retrain`).
+- [x] IEEE scientific experiment suite and 7 research Markdown reports.
 
-## 2. Research Success Criteria
+### Version 1.5.0 (Q4 2026 - Kubernetes & Streamlit Cloud Expansion)
+- [ ] Helm chart deployment template for Kubernetes cluster deployment.
+- [ ] Automated MLflow artifact model registry promotion webhook.
+- [ ] Real-time Kafka / MQTT sensor stream ingestion connectors.
 
-- **SC1 (Total Cost)**: Cost-sensitive model total cost < $12,000 on test set (statistically significant vs. cost-insensitive).
-- **SC2 (Drift FPR/Latency)**: Ensemble drift detection FPR < 0.5% during stable phases; detection latency < 500 samples.
-- **SC3 (CFE Validity)**: Counterfactual validity > 90% pre-drift and > 85% post-drift.
+### Version 2.0.0 (Q1 2027 - Next.js / React Enterprise Microfrontend)
+- [ ] Dedicated Next.js 14 / React 18 enterprise microfrontend dashboard.
+- [ ] Tailwind CSS + shadcn/ui + Framer Motion interactive equipment profiles.
+- [ ] WebSocket streaming telemetry feed.
