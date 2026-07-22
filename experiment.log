@@ -1,0 +1,77 @@
+{"timestamp": "2026-07-22T07:24:44.775026Z", "level": "INFO", "name": "__main__", "message": "Starting run_experiments script...", "taskName": null}
+{"timestamp": "2026-07-22T07:24:44.784718Z", "level": "INFO", "name": "src.orchestration.config_loader", "message": "Successfully loaded and validated configuration: configs\\default.yaml", "taskName": null, "experiment_name": "baseline_experiment"}
+{"timestamp": "2026-07-22T07:24:44.785250Z", "level": "ERROR", "name": "src.drift.detector", "message": "Unsupported drift detection method: abrupt", "taskName": null}
+{"timestamp": "2026-07-22T07:24:44.785770Z", "level": "ERROR", "name": "__main__", "message": "Error during experiment execution: Unsupported drift detection method: abrupt", "taskName": null}
+{"timestamp": "2026-07-22T07:25:20.371539Z", "level": "INFO", "name": "__main__", "message": "Starting run_experiments script...", "taskName": null}
+{"timestamp": "2026-07-22T07:25:20.459125Z", "level": "INFO", "name": "src.orchestration.config_loader", "message": "Successfully loaded and validated configuration: configs\\default.yaml", "taskName": null, "experiment_name": "baseline_experiment"}
+{"timestamp": "2026-07-22T07:25:20.460140Z", "level": "INFO", "name": "src.drift.detector", "message": "Initialized River ADWIN detector with parameters: {'delta': 0.002}", "taskName": null}
+{"timestamp": "2026-07-22T07:25:20.460681Z", "level": "INFO", "name": "src.orchestration.evaluation", "message": "Starting experiment suite...", "taskName": null}
+{"timestamp": "2026-07-22T07:25:20.544066Z", "level": "ERROR", "name": "__main__", "message": "Error during experiment execution: The filesystem tracking backend (e.g., './mlruns') is in maintenance mode and will not receive further updates. Please migrate to a database backend (e.g., 'sqlite:///mlflow.db') to access the latest MLflow features. The `mlflow migrate-filestore` tool migrates your existing data losslessly. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance. If the filesystem backend is required for your workflow, set `MLFLOW_ALLOW_FILE_STORE=true` to opt out of this exception.", "taskName": null}
+{"timestamp": "2026-07-22T07:26:16.908149Z", "level": "INFO", "name": "__main__", "message": "Starting run_experiments script...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:16.918622Z", "level": "INFO", "name": "src.orchestration.config_loader", "message": "Successfully loaded and validated configuration: configs\\default.yaml", "taskName": null, "experiment_name": "baseline_experiment"}
+{"timestamp": "2026-07-22T07:26:16.919182Z", "level": "INFO", "name": "src.drift.detector", "message": "Initialized River ADWIN detector with parameters: {'delta': 0.002}", "taskName": null}
+{"timestamp": "2026-07-22T07:26:16.919753Z", "level": "INFO", "name": "src.orchestration.evaluation", "message": "Starting experiment suite...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:16.933003Z", "level": "ERROR", "name": "__main__", "message": "Error during experiment execution: file://D:\\Adaptive Explainable Predictive Maintenance\\mlruns is not a valid remote uri. For remote access on windows, please consider using a different scheme such as SMB (e.g. smb://<hostname>/<path>).", "taskName": null}
+{"timestamp": "2026-07-22T07:26:51.058759Z", "level": "INFO", "name": "__main__", "message": "Starting run_experiments script...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:51.073923Z", "level": "INFO", "name": "src.orchestration.config_loader", "message": "Successfully loaded and validated configuration: configs\\default.yaml", "taskName": null, "experiment_name": "baseline_experiment"}
+{"timestamp": "2026-07-22T07:26:51.075567Z", "level": "INFO", "name": "src.drift.detector", "message": "Initialized River ADWIN detector with parameters: {'delta': 0.002}", "taskName": null}
+{"timestamp": "2026-07-22T07:26:51.076107Z", "level": "INFO", "name": "src.orchestration.evaluation", "message": "Starting experiment suite...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:51.422409Z", "level": "DEBUG", "name": "urllib3.connectionpool", "message": "Starting new HTTPS connection (1): config.mlflow-telemetry.io:443", "taskName": null}
+{"timestamp": "2026-07-22T07:26:51.772144Z", "level": "DEBUG", "name": "git.cmd", "message": "Popen(['git', 'version'], cwd=D:\\Adaptive Explainable Predictive Maintenance, stdin=None, shell=False, universal_newlines=False)", "taskName": null}
+{"timestamp": "2026-07-22T07:26:53.308791Z", "level": "DEBUG", "name": "git.cmd", "message": "Popen(['git', 'version'], cwd=D:\\Adaptive Explainable Predictive Maintenance, stdin=None, shell=False, universal_newlines=False)", "taskName": null}
+{"timestamp": "2026-07-22T07:26:53.535780Z", "level": "DEBUG", "name": "git.util", "message": "sys.platform='win32', git_executable='git'", "taskName": null}
+{"timestamp": "2026-07-22T07:26:53.538203Z", "level": "DEBUG", "name": "git.util", "message": "sys.platform='win32', git_executable='git'", "taskName": null}
+{"timestamp": "2026-07-22T07:26:53.540223Z", "level": "DEBUG", "name": "git.util", "message": "sys.platform='win32', git_executable='git'", "taskName": null}
+{"timestamp": "2026-07-22T07:26:53.681770Z", "level": "INFO", "name": "src.orchestration.evaluation", "message": "Initializing active model via RetrainingOrchestrator...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:53.686110Z", "level": "INFO", "name": "src.data.data_loader", "message": "Verifying integrity of aps_failure_training_set.csv...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:55.360281Z", "level": "INFO", "name": "src.data.data_loader", "message": "Integrity check passed for aps_failure_training_set.csv.", "taskName": null}
+{"timestamp": "2026-07-22T07:26:55.361275Z", "level": "INFO", "name": "src.data.data_loader", "message": "Loading raw dataset from data/raw/aps_failure_training_set.csv...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:56.384874Z", "level": "DEBUG", "name": "urllib3.connectionpool", "message": "https://config.mlflow-telemetry.io:443 \"GET /3.14.0.json HTTP/1.1\" 200 308", "taskName": null}
+{"timestamp": "2026-07-22T07:26:58.418214Z", "level": "INFO", "name": "src.data.data_loader", "message": "Successfully loaded dataset from data/raw/aps_failure_training_set.csv. Shape: (60000, 171)", "taskName": null, "rows": 60000, "columns": 171}
+{"timestamp": "2026-07-22T07:26:58.418759Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Starting automated model retraining pipeline...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:58.419304Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Fitting new FeaturePipeline on fresh training data...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:58.421446Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "Fitting FeaturePipeline...", "taskName": null}
+{"timestamp": "2026-07-22T07:26:58.670175Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "Columns kept: 163/170. Dropped 7 columns exceeding missing ratio threshold of 0.7.", "taskName": null}
+{"timestamp": "2026-07-22T07:26:59.425808Z", "level": "DEBUG", "name": "urllib3.connectionpool", "message": "Starting new HTTPS connection (1): api.mlflow-telemetry.io:443", "taskName": null}
+{"timestamp": "2026-07-22T07:26:59.718889Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "Applying log(x + 1) transform...", "taskName": null}
+{"timestamp": "2026-07-22T07:27:00.719485Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "Fitting RobustScaler...", "taskName": null}
+{"timestamp": "2026-07-22T07:27:02.955442Z", "level": "DEBUG", "name": "urllib3.connectionpool", "message": "https://api.mlflow-telemetry.io:443 \"POST /log HTTP/1.1\" 200 30", "taskName": null}
+{"timestamp": "2026-07-22T07:27:06.003920Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Retraining cost-sensitive baseline estimators...", "taskName": null}
+{"timestamp": "2026-07-22T07:27:06.004627Z", "level": "INFO", "name": "src.models.baseline_classifiers", "message": "Fitting baseline xgboost model...", "taskName": null}
+{"timestamp": "2026-07-22T07:27:35.298122Z", "level": "INFO", "name": "src.models.baseline_classifiers", "message": "Baseline xgboost model fitted successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:27:35.299118Z", "level": "INFO", "name": "src.models.baseline_classifiers", "message": "Fitting baseline lightgbm model...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:00.817351Z", "level": "INFO", "name": "src.models.baseline_classifiers", "message": "Baseline lightgbm model fitted successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:00.823219Z", "level": "INFO", "name": "src.models.baseline_classifiers", "message": "Fitting baseline catboost model...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:36.048392Z", "level": "INFO", "name": "src.models.baseline_classifiers", "message": "Baseline catboost model fitted successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:36.050961Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Optimizing AsymmetricEnsembleClassifier on validation set...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:36.050961Z", "level": "INFO", "name": "src.models.ensemble_model", "message": "Optimizing ensemble threshold on validation data...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:40.302433Z", "level": "INFO", "name": "src.models.ensemble_model", "message": "Ensemble optimized. Threshold: 0.4685 | Min Cost: 0.0", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.117067Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Saving retrained pipeline to temporary path: outputs/models\\feature_pipeline_temp.pkl", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.119044Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "Saving FeaturePipeline to outputs/models\\feature_pipeline_temp.pkl...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.183684Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "FeaturePipeline saved successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.185678Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Saving retrained ensemble to temporary path: outputs/models\\ensemble_model_temp.pkl", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.186679Z", "level": "INFO", "name": "src.models.ensemble_model", "message": "Saving ensemble model to outputs/models\\ensemble_model_temp.pkl...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.411045Z", "level": "INFO", "name": "src.models.ensemble_model", "message": "Ensemble model saved successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.411796Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Retraining pipeline completed successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.464936Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Promoting candidate model artifacts to active runtime status...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.600118Z", "level": "INFO", "name": "src.orchestration.retraining", "message": "Successfully updated active models. Retrained models are now live.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.600664Z", "level": "INFO", "name": "src.data.data_loader", "message": "Verifying integrity of aps_failure_test_set.csv...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.969104Z", "level": "INFO", "name": "src.data.data_loader", "message": "Integrity check passed for aps_failure_test_set.csv.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:42.970852Z", "level": "INFO", "name": "src.data.data_loader", "message": "Loading raw dataset from data/raw/aps_failure_test_set.csv...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:43.542396Z", "level": "INFO", "name": "src.data.data_loader", "message": "Successfully loaded dataset from data/raw/aps_failure_test_set.csv. Shape: (16000, 171)", "taskName": null, "rows": 16000, "columns": 171}
+{"timestamp": "2026-07-22T07:28:43.566943Z", "level": "INFO", "name": "src.orchestration.evaluation", "message": "Simulating streaming over 16000 samples...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:43.569524Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "Loading FeaturePipeline from outputs\\models\\feature_pipeline.pkl...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:43.572453Z", "level": "INFO", "name": "src.data.feature_engineering", "message": "FeaturePipeline loaded successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:43.572453Z", "level": "INFO", "name": "src.models.ensemble_model", "message": "Loading ensemble model from outputs\\models\\ensemble_model.pkl...", "taskName": null}
+{"timestamp": "2026-07-22T07:28:43.646846Z", "level": "INFO", "name": "src.models.ensemble_model", "message": "Ensemble model loaded successfully.", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.842886Z", "level": "INFO", "name": "src.orchestration.evaluation", "message": "Experiment completed. Metrics: {'total_samples': 16000, 'drift_alerts': 0, 'true_positives': 326, 'false_positives': 75, 'true_negatives': 15550, 'false_negatives': 49, 'total_cost': 25250.0, 'runtime_seconds': 121.46893835067749}", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.871139Z", "level": "INFO", "name": "__main__", "message": "\n=== Experiment Summary ===", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.872665Z", "level": "INFO", "name": "__main__", "message": "  total_samples: 16000", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.873280Z", "level": "INFO", "name": "__main__", "message": "  drift_alerts: 0", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.873280Z", "level": "INFO", "name": "__main__", "message": "  true_positives: 326", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.874004Z", "level": "INFO", "name": "__main__", "message": "  false_positives: 75", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.874004Z", "level": "INFO", "name": "__main__", "message": "  true_negatives: 15550", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.874004Z", "level": "INFO", "name": "__main__", "message": "  false_negatives: 49", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.875801Z", "level": "INFO", "name": "__main__", "message": "  total_cost: 25250.0", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.877421Z", "level": "INFO", "name": "__main__", "message": "  runtime_seconds: 121.46893835067749", "taskName": null}
+{"timestamp": "2026-07-22T07:28:52.877421Z", "level": "INFO", "name": "__main__", "message": "Metrics successfully logged to MLflow.", "taskName": null}

@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  experiment:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./configs:/app/configs
+      - ./mlruns:/app/mlruns
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
+    command: python scripts/run_experiments.py --config configs/default.yaml
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./configs:/app/configs
+    environment:
+      - API_PORT=8000
+      - API_HOST=0.0.0.0
+      - LOG_LEVEL=INFO
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./configs:/app/configs
+    command: streamlit run src/dashboard/app.py --server.port 8501 --server.address 0.0.0.0
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.2
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /mlflow/mlruns

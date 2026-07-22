@@ -1,0 +1,52 @@
+# configs/default.yaml
+# Default configuration for the Adaptive Predictive Maintenance experiments
+
+experiment:
+  name: "baseline_experiment"
+  seed: 42
+  n_runs: 20
+  
+data:
+  dataset_path: "data/raw/aps_failure_training_set.csv"
+  test_path: "data/raw/aps_failure_test_set.csv"
+  missing_threshold: 0.70        # Remove features with >70% missing
+  log_transform: true
+  
+model:
+  type: "xgboost"                # xgboost | lightgbm | catboost
+  cost_sensitive: true
+  cost_fp: 10.0
+  cost_fn: 500.0
+  n_estimators: 300
+  learning_rate: 0.1
+  max_depth: 6
+  
+drift:
+  enabled: true
+  type: "abrupt"                 # abrupt | gradual
+  onset_index: 30000             # Sample index where drift begins
+  magnitude: 1.0                 # Standard deviations
+  n_features: 10                 # Number of top features to perturb
+  transition_window: 2000        # Only for gradual drift
+  
+detection:
+  detectors: ["adwin", "page_hinkley", "kswin", "spc"]
+  consensus_k: 3                 # k-of-n voting threshold
+  smoothing_window: 50           # EMA window for residual smoothing
+  
+retraining:
+  strategy: "incremental"        # incremental | window
+  buffer_size: 500
+  additional_estimators_pct: 0.15
+  learning_rate_decay: 0.5
+  window_size: 2000              # Only for window strategy
+  
+explainability:
+  shap_enabled: true
+  cfe_enabled: true
+  n_counterfactuals: 4
+  cfe_method: "random"           # DiCE generation method
+  
+mlflow:
+  tracking_uri: "mlruns"
+  experiment_name: "adaptive_pdm"
