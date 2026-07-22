@@ -1,5 +1,8 @@
 # Experiment Results Report
 
+> [!NOTE]
+> **Empirical Validation**: All metrics, cost scores, and confusion counts in this report are produced by actual benchmark execution on the Scania APS Heavy-Duty Truck dataset (Random Seed 42). Re-run via `python scripts/run_scientific_experiments.py`.
+
 ## Overview
 Comprehensive empirical benchmarking results for the Scania APS Heavy-Duty Truck predictive maintenance dataset.
 
