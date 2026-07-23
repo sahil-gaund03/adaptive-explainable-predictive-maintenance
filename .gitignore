@@ -70,6 +70,7 @@ mlruns/
 
 # Data & Models (Large Binary Files ignored from Git tracking)
 data/raw/*.csv
+datasets/raw/*.csv
 data/processed/*.parquet
 models/*.pkl
 models/*.joblib
