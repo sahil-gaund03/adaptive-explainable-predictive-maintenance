@@ -1,0 +1,7 @@
+Metric,Value
+Baseline XGBoost Mean CV Cost ($),"$10,856.00 ± 1,728.10"
+Proposed Ensemble Mean CV Cost ($),"$9,554.00 ± 947.01"
+Paired t-test t-statistic,1.9479
+Paired t-test p-value,0.123260
+Wilcoxon Signed-Rank p-value,0.125000
+Cohen's d Effect Size,0.9739 (Large Effect)

@@ -132,8 +132,18 @@ class FeaturePipeline:
         # Re-attach target column if it was present
         if y is not None:
             scaled_df[target_col] = y
-
         return scaled_df
+
+    def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Fits the pipeline on df and returns the transformed DataFrame.
+
+        Args:
+            df: DataFrame to fit and transform.
+
+        Returns:
+            Preprocessed DataFrame.
+        """
+        return self.fit(df).transform(df)
 
     def save(self, path: str) -> None:
         """Serializes and saves the fitted pipeline to a file.

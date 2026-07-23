@@ -7,8 +7,6 @@ ablation studies, concept drift detection, statistical significance testing, and
 7 comprehensive IEEE research reports and publication figures.
 """
 
-import json
-import os
 import sys
 import time
 from pathlib import Path
@@ -20,13 +18,11 @@ sys.path.append(str(PROJECT_ROOT))
 
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 from scipy import stats
 from sklearn.metrics import (
     accuracy_score,
     balanced_accuracy_score,
     cohen_kappa_score,
-    confusion_matrix,
     f1_score,
     matthews_corrcoef,
     precision_recall_curve,
@@ -35,10 +31,8 @@ from sklearn.metrics import (
     roc_auc_score,
     roc_curve,
 )
-
 from src.data.data_loader import load_raw_data
 from src.data.feature_engineering import FeaturePipeline
-from src.drift.detector import ConceptDriftDetector
 from src.models.baseline_classifiers import BaselineClassifierWrapper
 from src.models.ensemble_model import AsymmetricEnsembleClassifier
 from src.orchestration.config_loader import load_config
@@ -67,13 +61,13 @@ def calculate_asymmetric_cost(y_true: np.ndarray, y_pred: np.ndarray, cost_fp: f
 def evaluate_model_performance(y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.ndarray, cost_fp: float = 10.0, cost_fn: float = 500.0) -> dict[str, Any]:
     """Compute comprehensive classification metrics."""
     cost, fp, fn = calculate_asymmetric_cost(y_true, y_pred, cost_fp, cost_fn)
-    
+
     # Calculate ROC-AUC and PR-AUC if valid probabilities exist
     try:
         roc_auc = float(roc_auc_score(y_true, y_prob))
     except Exception:
         roc_auc = 0.5
-        
+
     try:
         precision_arr, recall_arr, _ = precision_recall_curve(y_true, y_prob)
         pr_auc = float(np.trapz(recall_arr, precision_arr))
@@ -100,18 +94,18 @@ def generate_plots(results: dict[str, Any], output_dir: Path) -> None:
     """Generate high-resolution (300 DPI) publication figures."""
     plots_dir = output_dir / "plots"
     plots_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Figure 1: Model Cost Comparison Bar Chart
     fig, ax = plt.subplots(figsize=(6, 3.5))
     model_names = list(results.keys())
     costs = [results[m]["total_cost"] for m in model_names]
-    
+
     colors = plt.cm.Blues(np.linspace(0.4, 0.9, len(model_names)))
     bars = ax.bar(model_names, costs, color=colors, edgecolor="black", linewidth=0.8)
     ax.set_ylabel("Total Asymmetric Cost ($)")
     ax.set_title("Figure 1: Total Cost Minimization Comparison ($C_{FP}=\\$10, C_{FN}=\\$500$)")
     plt.xticks(rotation=25, ha="right")
-    
+
     for bar in bars:
         height = bar.get_height()
         ax.annotate(
@@ -134,7 +128,7 @@ def generate_plots(results: dict[str, Any], output_dir: Path) -> None:
             fpr, tpr, _ = roc_curve(results[m]["y_true"], results[m]["y_prob"])
             auc_val = results[m]["roc_auc"]
             ax.plot(fpr, tpr, label=f"{m} (AUC = {auc_val:.3f})")
-            
+
     ax.plot([0, 1], [0, 1], "k--", alpha=0.7)
     ax.set_xlabel("False Positive Rate")
     ax.set_ylabel("True Positive Rate (Recall)")
@@ -170,12 +164,12 @@ def main() -> None:
     output_dir = PROJECT_ROOT
     reports_dir = output_dir / "reports"
     reports_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # 1. Ingest Data
     print("1. Ingesting Scania APS Telemetry Dataset...")
     train_df = load_raw_data(config.data.dataset_path)
     test_df = load_raw_data(config.data.test_path)
-    
+
     # 2. Fit Feature Engineering Pipeline
     print("2. Fitting Feature Pipeline Transformer...")
     pipeline = FeaturePipeline(
@@ -183,15 +177,15 @@ def main() -> None:
         log_transform=config.data.log_transform
     )
     pipeline.fit(train_df)
-    
+
     train_trans = pipeline.transform(train_df)
     test_trans = pipeline.transform(test_df)
-    
+
     X_train = train_trans.drop(columns=["class"])
     y_train = train_trans["class"]
     X_test = test_trans.drop(columns=["class"])
     y_test = test_trans["class"]
-    
+
     # 3. Model Benchmark Runs
     print("\n3. Executing Model Benchmark Suite...")
     benchmark_models = ["xgboost", "lightgbm", "catboost"]
@@ -211,16 +205,16 @@ def main() -> None:
         )
         wrapper.fit(X_train, y_train, cost_fp=config.model.cost_fp, cost_fn=config.model.cost_fn)
         train_t = time.time() - start_t
-        
+
         y_pred = wrapper.predict(X_test)
         y_prob = wrapper.predict_proba(X_test)
-        
+
         metrics = evaluate_model_performance(y_test.values, y_pred, y_prob, config.model.cost_fp, config.model.cost_fn)
         metrics["training_time_sec"] = round(train_t, 2)
         metrics["y_pred"] = y_pred
         metrics["y_prob"] = y_prob
         metrics["y_true"] = y_test.values
-        
+
         results[m_type.upper()] = metrics
         fitted_wrappers.append(wrapper)
 
@@ -230,28 +224,28 @@ def main() -> None:
     ensemble = AsymmetricEnsembleClassifier(estimators=fitted_wrappers)
     ensemble.fit(X_test, y_test, cost_fp=config.model.cost_fp, cost_fn=config.model.cost_fn)
     train_t = time.time() - start_t
-    
+
     y_pred_ens = ensemble.predict(X_test)
     y_prob_ens = ensemble.predict_proba(X_test)
-    
+
     ens_metrics = evaluate_model_performance(y_test.values, y_pred_ens, y_prob_ens, config.model.cost_fp, config.model.cost_fn)
     ens_metrics["training_time_sec"] = round(train_t, 2)
     ens_metrics["optimized_threshold"] = ensemble.optimized_threshold
     ens_metrics["y_pred"] = y_pred_ens
     ens_metrics["y_prob"] = y_prob_ens
     ens_metrics["y_true"] = y_test.values
-    
+
     results["Proposed Ensemble (Ours)"] = ens_metrics
 
     # 5. Generate Figures
     print("\n4. Generating 300 DPI Publication-Grade Figures...")
     generate_plots(results, output_dir)
-    
+
     # 6. Statistical Significance Testing (Paired T-Test & Wilcoxon vs Baseline)
     print("\n5. Running Statistical Significance Tests & Effect Sizes...")
     base_cost_scores = [results["XGBOOST"]["total_cost"], results["LIGHTGBM"]["total_cost"], results["CATBOOST"]["total_cost"]]
     ens_cost_score = results["Proposed Ensemble (Ours)"]["total_cost"]
-    
+
     # Statistical computation
     t_stat, p_val = stats.ttest_1samp(base_cost_scores, ens_cost_score)
     mean_diff = float(np.mean(base_cost_scores) - ens_cost_score)
@@ -262,7 +256,7 @@ def main() -> None:
 
     # Report 1: EXPERIMENT_RESULTS.md
     with open(reports_dir / "EXPERIMENT_RESULTS.md", "w", encoding="utf-8") as f:
-        f.write(f"""# Experiment Results Report
+        f.write("""# Experiment Results Report
 
 > [!NOTE]
 > **Empirical Validation**: All metrics, cost scores, and confusion counts in this report are produced by actual benchmark execution on the Scania APS Heavy-Duty Truck dataset (Random Seed 42). Re-run via `python scripts/run_scientific_experiments.py`.

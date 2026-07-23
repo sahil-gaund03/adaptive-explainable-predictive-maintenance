@@ -1,0 +1,8 @@
+Model Architecture,Training Time (sec),Inference Latency (ms/1k),Memory Usage (MB)
+Decision Tree,14.02s,0.00ms,~120 MB
+Random Forest,40.11s,0.04ms,~120 MB
+XGBoost,12.47s,0.03ms,~120 MB
+LightGBM,8.28s,0.02ms,~120 MB
+CatBoost,11.25s,0.00ms,~120 MB
+Voting Ensemble,27.59s,0.02ms,~120 MB
+Proposed Asymmetric Ensemble (Ours),33.77s,0.05ms,~120 MB
