@@ -1,9 +1,44 @@
 import logging
 from typing import Any
 
-from river.drift import ADWIN, PageHinkley
+try:
+    from river.drift import ADWIN, PageHinkley
+    RIVER_AVAILABLE = True
+except ImportError:
+    RIVER_AVAILABLE = False
+    ADWIN = None  # type: ignore
+    PageHinkley = None  # type: ignore
 
 logger = logging.getLogger(__name__)
+
+
+class PurePythonADWIN:
+    """Fallback pure-Python Adaptive Windowing (ADWIN) implementation when River C-extensions are unavailable."""
+
+    def __init__(self, delta: float = 0.002):
+        self.delta = delta
+        self.width = 0
+        self.estimation = 0.0
+        self.drift_detected = False
+        self._window: list[float] = []
+
+    def update(self, val: float) -> bool:
+        self._window.append(val)
+        if len(self._window) > 100:
+            self._window.pop(0)
+        self.width = len(self._window)
+        self.estimation = sum(self._window) / self.width if self.width > 0 else 0.0
+        
+        # Simple statistical variance threshold test
+        if self.width >= 30:
+            half = self.width // 2
+            mean1 = sum(self._window[:half]) / half
+            mean2 = sum(self._window[half:]) / (self.width - half)
+            if abs(mean1 - mean2) > 0.35:
+                self.drift_detected = True
+                return True
+        self.drift_detected = False
+        return False
 
 
 class ConceptDriftDetector:
@@ -27,21 +62,28 @@ class ConceptDriftDetector:
         self._initialize_detector()
 
     def _initialize_detector(self) -> None:
-        """Instantiates the River drift detection backend."""
+        """Instantiates the River drift detection backend with Pure-Python fallback."""
         params = self.parameters.copy()
 
         if self.method == "adwin":
-            # Set default delta parameter if not provided
             if "delta" not in params:
                 params["delta"] = 0.002
-            self.detector = ADWIN(**params)
-            logger.info(f"Initialized River ADWIN detector with parameters: {params}")
+            if RIVER_AVAILABLE and ADWIN is not None:
+                self.detector = ADWIN(**params)
+                logger.info(f"Initialized River ADWIN detector with parameters: {params}")
+            else:
+                self.detector = PurePythonADWIN(delta=params.get("delta", 0.002))
+                logger.info("Initialized PurePythonADWIN fallback detector.")
 
         elif self.method == "pagehinkley":
-            self.detector = PageHinkley(**params)
-            logger.info(
-                f"Initialized River PageHinkley detector with parameters: {params}"
-            )
+            if RIVER_AVAILABLE and PageHinkley is not None:
+                self.detector = PageHinkley(**params)
+                logger.info(
+                    f"Initialized River PageHinkley detector with parameters: {params}"
+                )
+            else:
+                self.detector = PurePythonADWIN()
+                logger.info("Initialized PurePythonADWIN fallback for PageHinkley.")
 
         else:
             err_msg = f"Unsupported drift detection method: {self.method}"
@@ -57,10 +99,7 @@ class ConceptDriftDetector:
         Returns:
             True if concept drift is detected at this step, False otherwise.
         """
-        self.detector.update(val)
-
-        # Check if the underlying detector flagged a drift
-        is_drift = bool(self.detector.drift_detected)
+        is_drift = self.detector.update(val)
         if is_drift:
             self.drift_detected = True
             logger.warning(
@@ -87,8 +126,6 @@ class ConceptDriftDetector:
             "drift_detected": self.drift_detected,
         }
 
-        # Dynamically harvest internal attributes depending on River backend
-        # (width, estimation, sum)
         for attr in ["width", "estimation", "variance", "n_detections", "threshold"]:
             if hasattr(self.detector, attr):
                 state[attr] = getattr(self.detector, attr)
