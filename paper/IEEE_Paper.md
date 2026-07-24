@@ -2,7 +2,7 @@
 
 **Author Team**: Autonomous Industrial AI R&D Team  
 **Affiliation**: Department of Industrial Automation & Machine Learning R&D Group  
-**Repository**: [https://github.com/sahil-gaund03/adaptive-explainable-predictuve-maintenance.git](https://github.com/sahil-gaund03/adaptive-explainable-predictuve-maintenance.git)  
+**Repository**: [https://github.com/sahil-gaund03/adaptive-explainable-predictive-maintenance.git](https://github.com/sahil-gaund03/adaptive-explainable-predictive-maintenance.git)  
 
 ---
 

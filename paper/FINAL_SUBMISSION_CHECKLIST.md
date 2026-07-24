@@ -32,5 +32,5 @@
 
 ## 3. Author Ethics & Licensing
 - [x] **Originality Declaration**: Manuscript is original work not under review elsewhere.
-- [x] **Open Source Codebase**: Pushed to GitHub: `https://github.com/sahil-gaund03/adaptive-explainable-predictuve-maintenance.git`.
+- [x] **Open Source Codebase**: Pushed to GitHub: `https://github.com/sahil-gaund03/adaptive-explainable-predictive-maintenance.git`.
 - [x] **License**: MIT License (`LICENSE`) present in root directory.

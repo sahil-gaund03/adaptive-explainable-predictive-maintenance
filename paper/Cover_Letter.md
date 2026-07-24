@@ -24,7 +24,7 @@ Evaluated on the canonical Scania Air Pressure System (APS) Heavy-Duty Truck ben
 
 ### Author Declarations & Publication Ethics
 - **Originality**: This manuscript is our original work and has not been published previously, nor is it under consideration for publication elsewhere.
-- **Data & Code Availability**: To support scientific reproducibility, the complete open-source codebase, preprocessed parquet datasets, 300 DPI vector plots, LaTeX tables, and execution harnesses have been made publicly available on GitHub: `https://github.com/sahil-gaund03/adaptive-explainable-predictuve-maintenance.git`.
+- **Data & Code Availability**: To support scientific reproducibility, the complete open-source codebase, preprocessed parquet datasets, 300 DPI vector plots, LaTeX tables, and execution harnesses have been made publicly available on GitHub: `https://github.com/sahil-gaund03/adaptive-explainable-predictive-maintenance.git`.
 - **Conflicts of Interest**: The authors declare no competing financial or personal interests that could influence the work reported in this paper.
 
 We thank you and the editorial board for reviewing our manuscript. We look forward to receiving the reviewers' constructive feedback.
