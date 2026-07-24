@@ -649,7 +649,7 @@ Top 10 features with highest missing percentages:
             df_path.unlink()
 
     # 1. EXPERIMENT_LOG.md
-    with open(PROJECT_ROOT / "EXPERIMENT_LOG.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "experiments" / "EXPERIMENT_LOG.md", "w", encoding="utf-8") as f:
         f.write(f"""# Experiment Log & Execution Audit Report
 
 ## 1. Title & Executive Metadata
@@ -691,7 +691,7 @@ All benchmark runs completed with 100% reproducibility. Recommend deploying `mod
 """)
 
     # 2. MODEL_COMPARISON.md
-    with open(PROJECT_ROOT / "MODEL_COMPARISON.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "evaluation" / "MODEL_COMPARISON.md", "w", encoding="utf-8") as f:
         f.write(f"""# Model Comparison & Empirical Performance Report
 
 ## 1. Title & Framework Architecture
@@ -728,7 +728,7 @@ The proposed ensemble provides the best trade-off for industrial maintenance ope
 """)
 
     # 3. RESULTS_SUMMARY.md
-    with open(PROJECT_ROOT / "RESULTS_SUMMARY.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "evaluation" / "RESULTS_SUMMARY.md", "w", encoding="utf-8") as f:
         f.write(f"""# Results Summary Report
 
 ## 1. Title & Summary Overview
@@ -761,7 +761,7 @@ The framework is fully validated and ready for real-time deployment.
 """)
 
     # 4. STATISTICAL_ANALYSIS.md
-    with open(PROJECT_ROOT / "STATISTICAL_ANALYSIS.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "evaluation" / "STATISTICAL_ANALYSIS.md", "w", encoding="utf-8") as f:
         f.write(f"""# Statistical Analysis & Hypothesis Testing Report
 
 ## 1. Title & Hypothesis Formulation
@@ -798,7 +798,7 @@ We reject $H_0$ with >99.99% confidence.
 """)
 
     # 5. FIGURE_INDEX.md
-    with open(PROJECT_ROOT / "FIGURE_INDEX.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "figures" / "FIGURE_INDEX.md", "w", encoding="utf-8") as f:
         f.write("""# Publication Figure Index & Aesthetic Audit
 
 ## 1. Overview & Vector Standards
@@ -823,7 +823,7 @@ Data validation plots stored under `reports/data_validation/`:
 """)
 
     # 6. TABLE_INDEX.md
-    with open(PROJECT_ROOT / "TABLE_INDEX.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "tables" / "TABLE_INDEX.md", "w", encoding="utf-8") as f:
         f.write("""# Publication Table Index & Formatting Audit
 
 ## 1. Overview & Export Formats
@@ -837,7 +837,7 @@ All publication tables are exported in three formats: Markdown (`.md`), CSV (`.c
 """)
 
     # 7. PREPROCESSING_REPORT.md
-    with open(PROJECT_ROOT / "PREPROCESSING_REPORT.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "dataset" / "PREPROCESSING_REPORT.md", "w", encoding="utf-8") as f:
         f.write(f"""# Data Preprocessing & Feature Pipeline Report
 
 ## 1. Title & Pipeline Overview
@@ -874,7 +874,7 @@ Dropping features exceeding 70% missingness assumes missing values do not encode
 """)
 
     # 8. LIMITATIONS.md
-    with open(PROJECT_ROOT / "LIMITATIONS.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "reproducibility" / "LIMITATIONS.md", "w", encoding="utf-8") as f:
         f.write("""# Limitations & Threats to Validity Report
 
 ## 1. Title & Executive Scope
@@ -897,7 +897,7 @@ Future work includes native C++ parallelization of counterfactual searches and d
 """)
 
     # 9. REPRODUCIBILITY_REPORT.md
-    with open(PROJECT_ROOT / "REPRODUCIBILITY_REPORT.md", "w", encoding="utf-8") as f:
+    with open(REPORTS_DIR / "reproducibility" / "REPRODUCIBILITY_REPORT.md", "w", encoding="utf-8") as f:
         f.write(f"""# Reproducibility & Environment Specification Report
 
 ## 1. Title & System Environment
