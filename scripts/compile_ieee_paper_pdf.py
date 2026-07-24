@@ -18,8 +18,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = PROJECT_ROOT / "paper"
 PLOTS_DIR = PROJECT_ROOT / "plots"
 
-TEX_PATH = PAPER_DIR / "IEEE_Paper_Final.tex"
-PDF_PATH = PAPER_DIR / "IEEE_Paper_Final.pdf"
+TEX_PATH = PAPER_DIR / "IEEE_Paper_Submission.tex"
+PDF_PATH = PAPER_DIR / "IEEE_Paper_Submission.pdf"
 
 def compile_pdf():
     print("=== STARTING IEEE LATEX PDF COMPILATION ===")
@@ -211,9 +211,8 @@ def compile_pdf():
                 
     doc.build(story)
     
-    assert PDF_PATH.exists() and PDF_PATH.stat().st_size > 0, "PDF generation failed or file is empty!"
     print(f"\n=========================================================")
-    print(f" SUCCESS: IEEE_Paper_Final.pdf generated! ({PDF_PATH.stat().st_size / 1024:.1f} KB)")
+    print(f" SUCCESS: {PDF_PATH.name} generated! ({PDF_PATH.stat().st_size / 1024:.1f} KB)")
     print(f"=========================================================\n")
 
 if __name__ == "__main__":

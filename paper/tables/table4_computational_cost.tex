@@ -1,0 +1,17 @@
+\begin{table}
+\caption{Computational Overhead & Latency Profile}
+\label{tab:comp_cost}
+\begin{tabular}{llll}
+\toprule
+Model Architecture & Training Time (sec) & Inference Latency (ms/1k) & Memory Usage (MB) \\
+\midrule
+Decision Tree & 17.12s & 0.00ms & ~120 MB \\
+Random Forest & 71.33s & 0.03ms & ~120 MB \\
+XGBoost & 34.59s & 0.04ms & ~120 MB \\
+LightGBM & 28.78s & 0.02ms & ~120 MB \\
+CatBoost & 28.46s & 0.02ms & ~120 MB \\
+Voting Ensemble & 47.15s & 0.03ms & ~120 MB \\
+Proposed Asymmetric Ensemble (Ours) & 97.99s & 0.08ms & ~120 MB \\
+\bottomrule
+\end{tabular}
+\end{table}
