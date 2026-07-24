@@ -18,7 +18,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = PROJECT_ROOT / "paper"
 PLOTS_DIR = PROJECT_ROOT / "plots"
 
-TEX_PATH = PAPER_DIR / "IEEE_Paper_Submission.tex"
+TEX_PATH = PAPER_DIR / "IEEE_Paper_Submission1.tex"
 PDF_PATH = PAPER_DIR / "IEEE_Paper_Submission.pdf"
 
 def compile_pdf():
